@@ -1,0 +1,90 @@
+﻿@model ContactCreateViewModel
+
+@{
+    ViewBag.Title = "Create Contact us Form, Submit your query for web site, Submit your query for software requirment";
+    ViewBag.Description = "Contact with us";
+    ViewBag.Keywords = "Web site developer Contact Information, Software developer Contact Information";
+}
+<h1>Contact Information for Web site & Software development </h1>
+<div class="row">
+    <div class="col-sm-8">
+        <form enctype="multipart/form-data" asp-controller="Contact" asp-action="create" method="post" class="mt-3">
+
+            <div class="form-group row">
+                <label asp-for="FullName" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="FullName" class="form-control" placeholder="Full Name *" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PhoneNo" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="PhoneNo" class="form-control" placeholder="Phone / Mobile Number *" />
+                    <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="EmailId" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="EmailId" class="form-control" placeholder="Email Id *" />
+                    <span asp-validation-for="EmailId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="CompanyName" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="CompanyName" class="form-control" placeholder="Company Name" />
+                    <span asp-validation-for="CompanyName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="RequirementDescription" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                    <textarea asp-for="RequirementDescription" rows="3" class="form-control" placeholder="Requirement Description *"></textarea>
+                    <span asp-validation-for="RequirementDescription" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="DocPath" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                    <div class="custom-file">
+                        <input asp-for="DocPath" class="form-control custom-file-input" />
+                        <label class="custom-file-label">Choose File...</label>
+                    </div>
+                </div>
+            </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+
+            </div>
+            @*This script is required to display the selected file in the file upload element*@
+            @section Scripts{
+                <script>
+                    $(document).ready(function () {
+                        $('.custom-file-input').on("change", function () {
+                            var fileName = $(this).val().split("\\").pop();
+                            $(this).next('.custom-file-label').html(fileName);
+                        });
+                    });
+                </script>
+            }
+        </form>
+    </div>
+    <div class="col-sm-4">
+        <strong>Contact With Me</strong><br />
+        <address>
+            <b>Name       :</b>Yogendra Kumar<br />
+            <b>Mobile No. :</b>+91 9897505503<br />
+            <b>Email Id   :</b>yogendrakumar8219@gmail.com<br />
+            <b>Address    :</b>House Number -227<br />
+            South Bhopa Road, New Mandi,<br />
+            Muzaffarnagar (Uttar Pardesh)<br />
+            Pin Code 251001
+        </address>
+    </div>
+</div>

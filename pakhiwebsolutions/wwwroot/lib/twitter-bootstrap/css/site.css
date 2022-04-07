@@ -1,0 +1,18 @@
+﻿.btn {
+    width: 75px;
+}
+
+.imageThumbnail {
+    height: 200px;
+    width: auto;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+}
+    h1 { font-size: 26px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 22px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+    p  { font-size: 14px; }

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Contact>
+@{
+    ViewBag.Title = "Contact List";
+    ViewBag.Description = "";
+}
+<font size="2">
+    <div class="card card-default">
+        <div class="card-header">LIST</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                            <th>Contact Id</th>
+                            <th>Full Name</th>
+                            <th>Phone No</th>
+                            <th>Email Id</th>
+                            <th>Company Name</th>
+                            <th>Requirement Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var contact in Model)
+                        {
+                            <tr>
+                                <td><a asp-controller="Contact" asp-action="edit" asp-route-ContactId="@contact.ContactId" class="btn btn-primary">Edit</a></td>
+                                <td>
+                                    <form method="post" asp-controller="Contact" asp-action="delete" asp-route-ContactId="@contact.ContactId">
+                                        <span id="confirmDeleteSpan_@contact.ContactId" style="display:none">
+                                            <span>Are you sure you want to delete ?</span>
+                                            <button type="submit" class="btn btn-danger">Yes</button>
+                                            <a href="#" class="btn btn-primary" onclick="confirmDelete('@contact.ContactId',false)">No</a>
+                                        </span>
+                                        <span id="deleteSpan_@contact.ContactId">
+                                            <a href="#" class="btn btn-danger" onclick="confirmDelete('@contact.ContactId',true)">Delete</a>
+                                        </span>
+                                    </form>
+                                </td>
+                                <td>@contact.ContactId</td>
+                                <td>@contact.FullName</td>
+                                <td>@contact.PhoneNo</td>
+                                <td>@contact.EmailId</td>
+                                <td>@contact.CompanyName</td>
+                                <td class="col-sm-4">@contact.RequirementDescription</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</font>
+@section Scripts{
+    <script src="~/js/CustomScript.js"></script>
+}
